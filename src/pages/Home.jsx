@@ -1,3 +1,4 @@
+
 import Navbar from "../components/public/Navbar";
 import Footer from "../components/public/Footer";
 import HeroSection from "../components/public/HeroSection";
@@ -20,7 +21,9 @@ export default function Home() {
   const [category, setCategory] = useState("all");
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  useEffect(() => {
+   startHomeAnimation(1500);
+  }, []);
   useEffect(() => {
   getEvents()
     .then((data) => {

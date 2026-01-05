@@ -7,6 +7,7 @@ import Kontak from "./pages/Kontak";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
+import NotFound from "./pages/NotFound";
 
 // admin pages
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -35,6 +36,9 @@ export default function App() {
           <Route path="events/add" element={<AddEvent />} />
           <Route path="events/edit/:id" element={<EditEvent />} />
         </Route>
+        
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
