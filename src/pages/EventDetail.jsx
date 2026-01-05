@@ -30,6 +30,14 @@ export default function EventDetail() {
     return <p className="text-center mt-10">Event tidak ditemukan</p>;
   }
 
+    const handleCheckout = () => {
+    const message = `Halo, saya ingin memesan tiket event ${event.title}`;
+    window.open(
+      `https://wa.me/6283109731796?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  };
+  
   return (
     <>
       <Navbar />
@@ -56,10 +64,15 @@ export default function EventDetail() {
           Harga: Rp {event.price.toLocaleString()}
         </p>
 
-        <Button className="mt-6">Beli Tiket</Button>
+            <Button
+              onClick={handleCheckout}
+              className="mt-6 bg-green-700">
+              Beli Tiket
+            </Button>
       </div>
 
       <Footer />
     </>
   );
+
 }
