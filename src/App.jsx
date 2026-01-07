@@ -15,6 +15,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import Events from "./pages/admin/Events";
 import AddEvent from "./pages/admin/AddEvent";
 import EditEvent from "./pages/admin/EditEvent";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 export default function App() {
   return (
