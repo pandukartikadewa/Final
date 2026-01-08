@@ -18,6 +18,7 @@ import {
 export default function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
+  const [sort, setSort] = useState("default");
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   
@@ -46,6 +47,14 @@ export default function Home() {
     return matchSearch && matchCategory;
   });
 
+  // 🔃 SORT
+  const sortedEvents = [...filteredEvents].sort((a, b) => {
+    if (sort === "price-asc") return a.price - b.price;
+    if (sort === "price-desc") return b.price - a.price;
+    if (sort === "date-asc") return new Date(a.date) - new Date(b.date);
+    if (sort === "name-asc") return a.title.localeCompare(b.title);
+    return 0;
+  });
 
   return (
     <>
@@ -72,14 +81,27 @@ export default function Home() {
             <SelectItem value="Workshop">Festival</SelectItem>
           </SelectContent>
         </Select>
+
+        <Select value={sort} onValueChange={setSort}>
+          <SelectTrigger className="md:w-52">
+            <SelectValue placeholder="Urutkan" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="default">Default</SelectItem>
+            <SelectItem value="price-asc">Harga Termurah</SelectItem>
+            <SelectItem value="price-desc">Harga Termahal</SelectItem>
+            <SelectItem value="date-asc">Tanggal Terdekat</SelectItem>
+            <SelectItem value="name-asc">Nama A–Z</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* EVENT LIST */}
       <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {loading ? (
           <p className="col-span-full text-center">Loading event...</p>
-        ) : filteredEvents.length > 0 ? (
-          filteredEvents.map((event) => (
+        ) : sortedEvents.length > 0 ? (
+          sortedEvents.map((event) => (
             <EventCard key={event.id} event={event} />
           ))
         ) : (
@@ -94,3 +116,4 @@ export default function Home() {
     </>
   );
 }
+
