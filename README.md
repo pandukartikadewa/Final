@@ -4,6 +4,7 @@ Mohon maaf mas kami baru menggunakan branch di checkpoint 3. Dalam mengerjakan c
 # Anggota A (Frontend User)
 Instal dan setup react vite, tailwind css, dan shadcn ui. 
 Membuat struktur component file seperti: 
+
 src/public
 - Eventcard.jsx
 - Footer. jsx
@@ -42,8 +43,10 @@ Aplikasi web pemesanan tiket event yang dibuat menggunakan React dan Vite sebaga
 - Tailwind CSS
 - MockAPI
 - React Router DOM
+- Shadcn UI
+- AI (jujurly lo ya)
 
-Proyek ini dibuat menggunakan template React + Vite untuk mendapatkan performa pengembangan yang cepat (HMR).
+Proyek ini dibuat menggunakan template React + Vite untuk mendapatkan performa pengembangan yang cepat.
 
 # Cara Menjalankan Aplikasi
 1. Clone repository ini
