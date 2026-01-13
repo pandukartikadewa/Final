@@ -6,7 +6,6 @@ import TentangKami from "./pages/TentangKami";
 import Kontak from "./pages/Kontak";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import ForgotPassword from "./pages/ForgotPassword";
 
 // admin pages
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -39,3 +38,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
