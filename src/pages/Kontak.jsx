@@ -1,83 +1,94 @@
 import Navbar from "../components/public/Navbar";
 import Footer from "../components/public/Footer";
+import { useState } from "react";
 
-import { Card, CardContent } from "../components/ui/card";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Textarea } from "../components/ui/textarea";
-import { Label } from "../components/ui/label";
+const ADMIN_WA = "6283109731796"; 
 
 export default function Kontak() {
+  const [form, setForm] = useState({
+    nama: "",
+    email: "",
+    pesan: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Pesan dikirim");
+
+    const message = `
+Halo Admin TixApps
+
+Nama: ${form.nama}
+Email: ${form.email}
+
+Pesan:
+${form.pesan}
+    `;
+
+    const whatsappURL = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappURL, "_blank");
   };
 
   return (
     <>
       <Navbar />
 
-      <div className="max-w-6xl mx-auto p-6">
-        {/* HEADER */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold">Hubungi Kami</h1>
-          <p className="text-gray-500 mt-2">
-            Ada pertanyaan atau butuh bantuan? Silakan hubungi kami.
-          </p>
-        </div>
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        <h1 className="text-3xl font-bold text-center mb-6">
+          Hubungi Kami
+        </h1>
 
-        {/* CONTENT */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
-          {/* INFO KONTAK */}
-          <Card>
-            <CardContent className="space-y-4">
-              <h2 className="text-xl font-semibold">Informasi Kontak</h2>
+        <p className="text-center text-gray-600 mb-10">
+          Kirim pesan langsung ke WhatsApp kami
+        </p>
 
-              <p><strong>Email:</strong> support@tixapps.com</p>
-              <p><strong>WhatsApp:</strong> +62 812-3456-7890</p>
-              <p><strong>Alamat:</strong> Yogyakarta, Indonesia</p>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 max-w-xl mx-auto"
+        >
+          <input
+            type="text"
+            name="nama"
+            placeholder="Nama Lengkap"
+            required
+            onChange={handleChange}
+            className="w-full border px-4 py-3 rounded"
+          />
 
-              <p className="text-sm text-gray-500">
-                Kami siap membantu Anda setiap hari kerja.
-              </p>
-            </CardContent>
-          </Card>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            onChange={handleChange}
+            className="w-full border px-4 py-3 rounded"
+          />
 
-          {/* FORM KONTAK */}
-          <Card>
-            <CardContent>
-              <h2 className="text-xl font-semibold mb-4">
-                Kirim Pesan
-              </h2>
+          <textarea
+            name="pesan"
+            placeholder="Tulis pesan..."
+            required
+            rows={4}
+            onChange={handleChange}
+            className="w-full border px-4 py-3 rounded"
+          />
 
-              <form className="space-y-4" onSubmit={handleSubmit}>
-                <div className="space-y-1">
-                  <Label>Nama</Label>
-                  <Input placeholder="Nama lengkap" />
-                </div>
-
-                <div className="space-y-1">
-                  <Label>Email</Label>
-                  <Input type="email" placeholder="email@example.com" />
-                </div>
-
-                <div className="space-y-1">
-                  <Label>Pesan</Label>
-                  <Textarea
-                    placeholder="Tulis pesan Anda..."
-                    rows={4}
-                  />
-                </div>
-
-                <Button type="submit" className="w-full">
-                  Kirim Pesan
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-        </div>
+          <button
+            type="submit"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded transition"
+          >
+            Kirim
+          </button>
+        </form>
       </div>
 
       <Footer />
