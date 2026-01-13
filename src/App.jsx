@@ -6,7 +6,6 @@ import TentangKami from "./pages/TentangKami";
 import Kontak from "./pages/Kontak";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 
 // admin pages
@@ -28,7 +27,6 @@ export default function App() {
         <Route path="/kontak" element={<Kontak />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* admin routes */}
         <Route path="/admin" element={<AdminLayout />}>
@@ -44,3 +42,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
