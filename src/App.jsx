@@ -25,7 +25,6 @@ export default function App() {
         <Route path="/kontak" element={<Kontak />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* admin routes */}
         <Route path="/admin" element={<AdminLayout />}>
@@ -38,4 +37,5 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
 
