@@ -1,104 +1,42 @@
-# تطبيق حجز تذاكر الفعاليات
+NOTED: 
+Mohon maaf mas kami baru menggunakan branch di checkpoint 3. Dalam mengerjakan checkpoint 1-2 kami sistem nya setiap anggota a,b, dan c mengerjakan tugas masing-masing dahulu baru kalau sudah seslesai upload ke repositoy github terus habis itu akan di clone oleh anggota selanjutnya dan seterusnya sampai checkpoint 2. Untuk pembagian tugas lebih jelas nya seperti berikut ini: 
 
-هذا المشروع عبارة عن تطبيق ويب لحجز تذاكر الفعاليات، تم تطويره باستخدام React و Vite كجزء من المشروع النهائي لمادة تكنولوجيا الويب.
+# Anggota A (Frontend User)
+Instal dan setup react vite, tailwind css, dan shadcn ui. 
+Membuat struktur component file seperti: 
+src/public
+- Eventcard.jsx
+- Footer. jsx
+- Navbar. jsx
 
----
+src/pages
+- EventDetail.jsx (tidak termasuk integrasi API) 
+- Home.jsx
+- Kontak.jsx
+- Login.jsx (tidak termasuk integrasi API) 
+- Notfound.jsx
+- Signup.jsx (tidak termasuk integrasi API) 
+- Tentang kami.jsx
 
-## التقنيات المستخدمة
+src/
+- App.jsx
 
-- React
-- Vite
-- Tailwind CSS
-- MockAPI
-- React Router DOM
+# Anggota B (Admin Frontend)
+- Dashboard admin
+- CRUD event (admin)
+- Validasi form
+- UX, loading, dan error handling
 
-تم إنشاء المشروع باستخدام قالب React + Vite للحصول على سرعة عالية أثناء التطوير ودعم التحديث الفوري (HMR).
-
----
-
-## طريقة تشغيل التطبيق
-
-1. قم بنسخ المستودع (Clone)
-2. ادخل إلى مجلد المشروع
-3. نفّذ الأوامر التالية في الطرفية:
-
-npm install
-npm run dev
-
-4. افتح المتصفح واذهب إلى الرابط:
-http://localhost:5173
-
----
-
-## ميزات التطبيق
-
-### واجهة المستخدم
-- عرض قائمة الفعاليات
-- عرض تفاصيل كل فعالية
-- البحث والتصفية
-- صفحة من نحن
-- صفحة تواصل معنا
-
-### لوحة التحكم (Admin)
-- صفحة تسجيل الدخول (محاكاة)
-- عرض جميع الفعاليات
-- إضافة فعالية جديدة
-- تعديل فعالية
-- حذف فعالية
-- التحقق من صحة البيانات (Validation)
-- رسائل تحميل وأخطاء (Loading & Error Handling)
-
-### واجهة البرمجة (API)
-- استخدام MockAPI كمحاكاة للـ Backend
-- دعم العمليات الأساسية (CRUD)
-- التعامل مع الأخطاء وحالات التأخير
-
----
-
-## تقسيم العمل بين أعضاء الفريق
-
-### العضو A
-- صفحات المستخدم (Home و Event Detail)
-- تصميم واجهة كتالوج الفعاليات
-- ربط API لواجهة المستخدم
-
-### العضو B
-- لوحة تحكم الإدارة
-- تنفيذ CRUD للفعاليات
-- التحقق من صحة النماذج
-- تحسين تجربة المستخدم (UX)
-- معالجة الأخطاء وحالات التحميل
-
-### العضو C
-- إعداد MockAPI
-- تصميم هيكلة بيانات الفعاليات
-- توفير نقاط الوصول (Endpoints)
-
----
-
-## ملاحظات الأمان
-
-يستخدم التطبيق نظام تسجيل دخول تجريبي (محاكاة) بدون نظام توثيق حقيقي في الخلفية، وذلك بما يتناسب مع نطاق المشروع المعتمد على الواجهة الأمامية واستخدام MockAPI.
-
----
-
-## قالب React + Vite
-
-يوفر قالب React + Vite إعدادًا بسيطًا لتشغيل React مع دعم التحديث الفوري (HMR) وبعض إعدادات ESLint الأساسية.
-
-الإضافات الرسمية المستخدمة:
-- @vitejs/plugin-react
-- @vitejs/plugin-react-swc
-
-
+# Anggota C (Set up API & Integrasi)
+- Setup MockAPI
+- Menyusun schema data event
+- Menyediakan endpoint API
+- Mengintegrasikan API ke dalam pages eventdetail, login, dan signup
+  
 # Event Ticketing Web App
-
 Aplikasi web pemesanan tiket event yang dibuat menggunakan React dan Vite sebagai Final Project mata kuliah Teknologi Web.
 
----
-
-## Teknologi yang Digunakan
-
+# Teknologi yang Digunakan
 - React
 - Vite
 - Tailwind CSS
@@ -107,10 +45,7 @@ Aplikasi web pemesanan tiket event yang dibuat menggunakan React dan Vite sebaga
 
 Proyek ini dibuat menggunakan template React + Vite untuk mendapatkan performa pengembangan yang cepat (HMR).
 
----
-
-## Cara Menjalankan Aplikasi
-
+# Cara Menjalankan Aplikasi
 1. Clone repository ini
 2. Masuk ke folder project
 3. Jalankan perintah berikut di terminal:
@@ -121,18 +56,15 @@ npm run dev
 4. Buka browser dan akses:
 http://localhost:5173
 
----
-
-## Fitur Aplikasi
-
-### User
+# Fitur Aplikasi
+# User
 - Melihat daftar event
 - Melihat detail event
 - Pencarian dan filter event
 - Halaman Tentang Kami
 - Halaman Kontak
 
-### Admin
+# Admin
 - Login page (simulasi)
 - Melihat daftar event
 - Menambahkan event
@@ -140,44 +72,7 @@ http://localhost:5173
 - Menghapus event
 - Validasi form dan feedback UI
 
-### API
+# API
 - Menggunakan MockAPI sebagai backend simulasi
 - CRUD event (GET, POST, PUT, DELETE)
 - Error handling dan loading state
-
----
-
-## Pembagian Tugas Tim
-
-### Anggota A
-- Halaman user (Home, Event Detail)
-- UI katalog event
-- Integrasi API untuk sisi user
-
-### Anggota B
-- Dashboard admin
-- CRUD event (admin)
-- Validasi form
-- UX, loading, dan error handling
-
-### Anggota C
-- Setup MockAPI
-- Menyusun schema data event
-- Menyediakan endpoint API
-
----
-
-## Catatan Keamanan
-
-Aplikasi ini menggunakan simulasi authentication (login page) tanpa backend autentikasi asli.
-Hal ini disesuaikan dengan ruang lingkup proyek frontend dan penggunaan MockAPI.
-
----
-
-## Template React + Vite
-
-Template ini menyediakan setup minimal agar React dapat berjalan dengan Vite, mendukung Hot Module Replacement (HMR) dan aturan ESLint dasar.
-
-Plugin resmi yang digunakan:
-- @vitejs/plugin-react
-- @vitejs/plugin-react-swc
