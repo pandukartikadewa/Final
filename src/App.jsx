@@ -6,6 +6,7 @@ import TentangKami from "./pages/TentangKami";
 import Kontak from "./pages/Kontak";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import NotFound from "./pages/NotFound";
 
 // admin pages
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -13,6 +14,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import Events from "./pages/admin/Events";
 import AddEvent from "./pages/admin/AddEvent";
 import EditEvent from "./pages/admin/EditEvent";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 export default function App() {
   return (
@@ -33,6 +35,9 @@ export default function App() {
           <Route path="events/add" element={<AddEvent />} />
           <Route path="events/edit/:id" element={<EditEvent />} />
         </Route>
+        
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
