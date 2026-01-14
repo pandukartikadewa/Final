@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getEvents } from "../../services/eventService";
+import { getEvents, updateEvent } from "../../services/eventService";
 import { getUsers } from "../../services/userService";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
@@ -23,6 +23,24 @@ export default function Dashboard() {
         setLoading(false);
       });
   }, []);
+
+  const handleStatusToggle = async (event) => {
+    const newStatus = event.status === 'inactive' ? 'active' : 'inactive';
+    try {
+      // Optimistic update
+      const updatedEvents = events.map(e =>
+        e.id === event.id ? { ...e, status: newStatus } : e
+      );
+      setEvents(updatedEvents);
+
+      await updateEvent(event.id, { status: newStatus });
+    } catch (error) {
+      console.error("Failed to update status", error);
+      // Revert on failure
+      setEvents(events);
+      alert("Failed to update status");
+    }
+  };
 
   if (loading) return <div className="p-8 text-center">Loading Dashboard...</div>;
 
@@ -93,6 +111,7 @@ export default function Dashboard() {
                   <th className="px-6 py-3">Category</th>
                   <th className="px-6 py-3">Price</th>
                   <th className="px-6 py-3">Status</th>
+                  <th className="px-6 py-3">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -101,10 +120,20 @@ export default function Dashboard() {
                     <td className="px-6 py-4 font-medium text-gray-900">
                       {event.title}
                     </td>
+
                     <td className="px-6 py-4">{event.category}</td>
                     <td className="px-6 py-4">Rp {Number(event.price).toLocaleString("id-ID")}</td>
-                    <td className="px-6 py-4 text-green-600 font-semibold">
-                      Active
+                    <td className={`px-6 py-4 font-semibold ${event.status === 'inactive' ? 'text-red-600' : 'text-green-600'}`}>
+                      {event.status === 'inactive' ? 'Inactive' : 'Active'}
+                    </td>
+                    <td className="px-6 py-4">
+                      <Button
+                        variant={event.status === 'inactive' ? "default" : "destructive"}
+                        size="sm"
+                        onClick={() => handleStatusToggle(event)}
+                      >
+                        {event.status === 'inactive' ? 'Activate' : 'Deactivate'}
+                      </Button>
                     </td>
                   </tr>
                 ))}
