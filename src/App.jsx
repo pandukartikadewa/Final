@@ -28,14 +28,16 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* admin routes */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="events" element={<Events />} />
-          <Route path="events/add" element={<AddEvent />} />
-          <Route path="events/edit/:id" element={<EditEvent />} />
+        {/* admin routes - Protected */}
+        <Route path="/admin" element={<ProtectedRoute requireAdmin={true} />}>
+          <Route element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="events" element={<Events />} />
+            <Route path="events/add" element={<AddEvent />} />
+            <Route path="events/edit/:id" element={<EditEvent />} />
+          </Route>
         </Route>
-        
+
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>

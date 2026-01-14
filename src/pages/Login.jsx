@@ -5,15 +5,14 @@ import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
-
-const USERS_API = "https://695529841cd5294d2c7e8d7f.mockapi.io/api/v1/users";
+import { getUsers } from "../services/userService";
 
 export default function Login() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [status, setStatus] = useState("idle"); 
+  const [status, setStatus] = useState("idle");
   // idle | loading | success | invalid | api-error
 
   const handleLogin = async (e) => {
@@ -21,10 +20,7 @@ export default function Login() {
     setStatus("loading");
 
     try {
-      const res = await fetch(USERS_API);
-      if (!res.ok) throw new Error("API_ERROR");
-
-      const users = await res.json();
+      const users = await getUsers();
 
       const foundUser = users.find(
         (u) => u.email === email && u.password === password
@@ -36,6 +32,9 @@ export default function Login() {
       }
 
       setStatus("success");
+
+      // SAVE TO LOCAL STORAGE
+      localStorage.setItem("auth", JSON.stringify(foundUser));
 
       setTimeout(() => {
         if (foundUser.role === "admin") {

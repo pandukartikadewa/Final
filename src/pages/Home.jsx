@@ -21,17 +21,17 @@ export default function Home() {
   const [sort, setSort] = useState("default");
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
-  getEvents()
-    .then((data) => {
-      setEvents(data);
-      setLoading(false);
-    })
-    .catch((error) => {
-      console.error("Gagal fetch events:", error);
-      setLoading(false);
-    });
+    getEvents()
+      .then((data) => {
+        setEvents(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Gagal fetch events:", error);
+        setLoading(false);
+      });
   }, []);
 
 
