@@ -4,7 +4,7 @@ import { isLoggedIn, isAdmin } from "../utils/auth";
 export default function ProtectedRoute({ requireAdmin = false }) {
   // belum login
   if (!isLoggedIn()) {
-    return <Navigate to="/admin" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   // login tapi bukan admin

@@ -3,7 +3,9 @@ import { NavLink } from "react-router-dom";
 export default function AdminHeader() {
   return (
     <header className="bg-slate-800 text-white px-6 py-4 flex items-center justify-between">
-      <h1 className="text-lg font-bold">Admin Panel</h1>
+      <h1 className="text-lg font-bold">
+        <NavLink to="/admin">Admin Panel</NavLink>
+      </h1>
 
       <nav className="flex gap-6">
         <NavLink
