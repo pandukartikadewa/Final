@@ -61,40 +61,46 @@ export default function Home() {
       <Navbar />
       <HeroSection />
 
-      {/* SEARCH & FILTER */}
-      <div className="max-w-7xl mx-auto p-6 flex justify-center gap-4 flex-col md:flex-row">
-        <Input
-          placeholder="Cari event..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="md:w-1/2"
-        />
+{/* SEARCH FILTER SORT (DI BAWAH HERO, TIDAK FLOATING) */}
+<section className="bg-white">
+  <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="bg-gray-50 border rounded-xl p-5 shadow-sm flex flex-col md:flex-row gap-4">
+      
+      <Input
+        placeholder="Cari event..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="bg-white"
+      />
 
-        <Select value={category} onValueChange={setCategory}>
-          <SelectTrigger className="md:w-60">
-            <SelectValue placeholder="Pilih kategori" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Semua Kategori</SelectItem>
-            <SelectItem value="Music">Music</SelectItem>
-            <SelectItem value="Seminar">Seminar</SelectItem>
-            <SelectItem value="Workshop">Festival</SelectItem>
-          </SelectContent>
-        </Select>
+      <Select value={category} onValueChange={setCategory}>
+        <SelectTrigger className="bg-white">
+          <SelectValue placeholder="Kategori" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">Semua Kategori</SelectItem>
+          <SelectItem value="Music">Music</SelectItem>
+          <SelectItem value="Seminar">Seminar</SelectItem>
+          <SelectItem value="Workshop">Workshop</SelectItem>
+        </SelectContent>
+      </Select>
 
-        <Select value={sort} onValueChange={setSort}>
-          <SelectTrigger className="md:w-52">
-            <SelectValue placeholder="Urutkan" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="default">Default</SelectItem>
-            <SelectItem value="price-asc">Harga Termurah</SelectItem>
-            <SelectItem value="price-desc">Harga Termahal</SelectItem>
-            <SelectItem value="date-asc">Tanggal Terdekat</SelectItem>
-            <SelectItem value="name-asc">Nama A–Z</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+      <Select value={sort} onValueChange={setSort}>
+        <SelectTrigger className="bg-white">
+          <SelectValue placeholder="Urutkan" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="default">Default</SelectItem>
+          <SelectItem value="price-asc">Harga Termurah</SelectItem>
+          <SelectItem value="price-desc">Harga Termahal</SelectItem>
+          <SelectItem value="date-asc">Tanggal Terdekat</SelectItem>
+          <SelectItem value="name-asc">Nama A–Z</SelectItem>
+        </SelectContent>
+      </Select>
+
+    </div>
+  </div>
+</section>
 
       {/* EVENT LIST */}
       <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -116,4 +122,5 @@ export default function Home() {
     </>
   );
 }
+
 
