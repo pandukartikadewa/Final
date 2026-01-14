@@ -61,66 +61,72 @@ export default function Home() {
       <Navbar />
       <HeroSection />
 
-{/* SEARCH FILTER SORT */}
-<section className="bg-white">
-  <div className="max-w-7xl mx-auto px-6 py-8">
-    <div className="bg-gray-50 border rounded-xl p-5 shadow-sm flex flex-col md:flex-row gap-4">
-      
-      <Input
-        placeholder="Cari event..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="bg-white"
-      />
+      {/* SEARCH FILTER SORT (DI BAWAH HERO, TIDAK FLOATING) */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="bg-gray-50 border rounded-xl p-5 shadow-sm flex flex-col md:flex-row gap-4">
 
-      <Select value={category} onValueChange={setCategory}>
-        <SelectTrigger className="bg-white">
-          <SelectValue placeholder="Kategori" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">Semua Kategori</SelectItem>
-          <SelectItem value="Music">Music</SelectItem>
-          <SelectItem value="Seminar">Seminar</SelectItem>
-          <SelectItem value="Workshop">Workshop</SelectItem>
-        </SelectContent>
-      </Select>
+            <Input
+              placeholder="Cari event..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="bg-white"
+            />
 
-      <Select value={sort} onValueChange={setSort}>
-        <SelectTrigger className="bg-white">
-          <SelectValue placeholder="Urutkan" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="default">Default</SelectItem>
-          <SelectItem value="price-asc">Harga Termurah</SelectItem>
-          <SelectItem value="price-desc">Harga Termahal</SelectItem>
-          <SelectItem value="date-asc">Tanggal Terdekat</SelectItem>
-          <SelectItem value="name-asc">Nama A–Z</SelectItem>
-        </SelectContent>
-      </Select>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger className="bg-white">
+                <SelectValue placeholder="Kategori" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Semua Kategori</SelectItem>
+                <SelectItem value="Music">Music</SelectItem>
+                <SelectItem value="Technology">Technology</SelectItem>
+                <SelectItem value="Art">Art</SelectItem>
+                <SelectItem value="Sports">Sports</SelectItem>
+                <SelectItem value="Education">Education</SelectItem>
+                <SelectItem value="Other">Other</SelectItem>
+              </SelectContent>
+            </Select>
 
-    </div>
-  </div>
-</section>
+            <Select value={sort} onValueChange={setSort}>
+              <SelectTrigger className="bg-white">
+                <SelectValue placeholder="Urutkan" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="default">Default</SelectItem>
+                <SelectItem value="price-asc">Harga Termurah</SelectItem>
+                <SelectItem value="price-desc">Harga Termahal</SelectItem>
+                <SelectItem value="date-asc">Tanggal Terdekat</SelectItem>
+                <SelectItem value="name-asc">Nama A–Z</SelectItem>
+              </SelectContent>
+            </Select>
 
-      {/* EVENT LIST */}
-      <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {loading ? (
-          <p className="col-span-full text-center">Loading event...</p>
-        ) : sortedEvents.length > 0 ? (
-          sortedEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))
-        ) : (
-          <p className="col-span-full text-center text-gray-500">
-            Event tidak ditemukan
-          </p>
-        )}
-      </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EVENTS GRID */}
+      <section className="bg-white pb-20">
+        <div className="max-w-7xl mx-auto px-6">
+          {loading ? (
+            <p className="text-center">Loading events...</p>
+          ) : sortedEvents.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {sortedEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20 text-gray-500">
+              <p>Tidak ada event yang ditemukan.</p>
+            </div>
+          )}
+        </div>
+      </section>
 
 
       <Footer />
     </>
   );
 }
-
 
